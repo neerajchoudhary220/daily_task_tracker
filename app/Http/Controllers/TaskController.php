@@ -91,6 +91,49 @@ class TaskController extends Controller
    }
 
 
+   public function completeTask(Task $task,Request $request){
+    try {
+
+        DB::beginTransaction();
+        if($request->ajax()){
+            $task->update([
+                'completed_time'=>$request->completed_time,
+                'status'=>1
+            ]);
+        DB::commit();
+        return response()->json([
+            'message'=>'Task completed successfully'
+        ]);
+        }
+    } catch (\Exception $e) {
+        Log::error($e);
+        DB::rollBack();
+        return response()->json([
+            'message'=>$e->getMessage(),
+        ],$e->getCode());
+
+    }
+  
+   }
+
+   public function uncompleteTask(Task $task)  {
+    try {
+        $task->update([
+            'status'=>0,
+            'completed_time'=>null
+        ]);
+        return response()->json([
+           'message'=>'Task uncompleted successfully'
+        ]);
+
+    } catch (\Exception $e) {
+        Log::error($e);
+        return response()->json([
+           'message'=>$e->getMessage(),
+        ],$e->getCode());
+    }
+   }
+
    public function view(Task $task){
     return view('task.view',compact('task'));
    }
@@ -100,6 +143,7 @@ class TaskController extends Controller
       if($request->ajax()){
           $_order = request('order');
           $_columns = request('columns');
+        //   dd($_columns[$_order[0]['column']]['name']);
           $order_by = $_columns[$_order[0]['column']]['name'];
           $order_dir = $_order[0]['dir'];
           $search = request('search');

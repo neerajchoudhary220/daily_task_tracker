@@ -24,15 +24,21 @@
         </div>
     </div>
     </div>
-    @push('custom-js')
-        <script src="{{ asset('assets/js/plugins/datatable/2.1.6/dataTables.js') }}"></script>
 
-        <script src="{{ asset('assets/js/plugins/datatable/2.1.6/dataTables.bootstrap5.js') }}"></script>
-
-        <script>
-            window.dt_tbl = ''
-            const task_list_url = "{{ route('task.list') }}";
-        </script>
-        <script src="{{ asset('assets/js/task/task.js') }}"></script>
-    @endpush
+@include('task.complete-task-modal')
+ 
 @endsection
+
+@push('custom-js')
+{{-- <script src="{{ asset('assets/js/plugins/datatable/2.1.6/dataTables.js') }}"></script> --}}
+<script src="{{ asset('assets/js/plugins/datatable/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/datatable/dataTables.bootstrap4.min.js') }}"></script>
+
+{{-- <script src="{{ asset('assets/js/plugins/datatable/2.1.6/dataTables.bootstrap5.js') }}"></script> --}}
+
+<script>
+    window.dt_tbl = ''
+    const task_list_url = "{{ route('task.list') }}";
+</script>
+<script src="{{ asset('assets/js/task/task.js') }}"></script>
+@endpush

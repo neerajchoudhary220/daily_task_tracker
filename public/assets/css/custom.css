@@ -35,4 +35,16 @@
     color: #6c757d;
     content: "/" !important;
 }
+
+.dataTables_filter,.dataTables_paginate{
+  position: absolute;
+  right: 15px;
+}
+
+button.close {
+  position: absolute;
+  top: 1px;
+  color:#fff;
+  right: 5px;
+}
   

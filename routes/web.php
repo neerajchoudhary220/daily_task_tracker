@@ -30,6 +30,8 @@ Route::middleware('auth')->group(function(){
         Route::post('update/{task}','update')->name('task.update'); 
         Route::post('store','store')->name('task.store');
         Route::get('delete/{task}','delete')->name('task.delete');
+        Route::post('complete/{task}','completeTask')->name('task.complete');
+        Route::get('uncomplete/{task}','uncompleteTask')->name('task.uncomplete');
     });
     Route::get('logout',[AuthController::class,'logout'])->name('logout');
 });
