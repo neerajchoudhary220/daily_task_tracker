@@ -13,7 +13,6 @@
 
 <!-- custom-chart js -->
 {{-- <script src="{{ asset('assets/js/pages/dashboard-main.js') }}"></script> --}}
-@livewireScripts
 <script>
     $(document).ready(function() {
         $.ajaxSetup({
@@ -26,4 +25,6 @@
     })
 
 </script>
+@livewireScripts
+
 @stack('custom-js')
