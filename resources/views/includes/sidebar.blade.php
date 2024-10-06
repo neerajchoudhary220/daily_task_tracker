@@ -35,6 +35,10 @@
 
                     </ul>
                 </li> 
+
+                <li class="nav-item">
+                    <a href="{{ route('task-category') }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-grid"></i></span><span class="pcoded-mtext">Task Category</span></a>
+                </li>
                 {{-- <li class="nav-item pcoded-menu-caption">
                     <label>UI Element</label>
                 </li>
