@@ -51,17 +51,13 @@ function dbTable() {
     order: [1, "desc"],
     drawCallback: function (settings, json) {
       //Click delete button
+      $(document).find('[data-bs-toggle="tooltip"]').tooltip();
+
       $(".dltBtn").on("click", function () {
         const delete_url = $(this).val();
         function deleteReq() {
-          $.ajax({
-            url: delete_url,
-            type: "get",
-            success: function (response) {
-              swal(`Deleted!`, response.message, `success`);
-              dt_tbl.ajax.reload();
-            },
-          });
+          custom.functions.deleteTblData(delete_url,dt_tbl);
+        
         }
         custom.functions.deleteTask(deleteReq);
       });
@@ -79,35 +75,34 @@ function dbTable() {
       $(".uncompleteTaskBtn").on("click", function () {
         const uRL = $(this).attr("data-url");
 
-        function taskUncompleteReq(){
+        function taskUncompleteReq() {
           $.ajax({
             url: uRL,
             type: "get",
             success: function (response) {
-              // custom.functions.successMessage(response.message);
-              custom.functions.successMessage("Uncompleted Task", response.message);
+              custom.functions.successMessage(
+                "Start Again Task",
+                response.message
+              );
               dt_tbl.ajax.reload();
             },
             error: function (xhr, status, error) {
-              // custom.functions.errorMessage(xhr.responseJSON.message);
             },
-          })
+          });
         }
-        custom.functions.uncompleteTask(taskUncompleteReq);
+        custom.functions.startAgain(taskUncompleteReq);
       });
     },
   });
 }
 
-
-
 $(document).ready(function () {
   dbTable();
   $("#task_complete_submit_btn").on("click", function (e) {
     e.preventDefault();
-  
+
     const data = $("#task_completd_form").serializeArray();
-  
+
     uRL = $("#task_completd_form").attr("action");
     $.ajax({
       url: uRL,
@@ -116,14 +111,10 @@ $(document).ready(function () {
       success: function (response) {
         $("#task_complete_modal").modal("hide");
         dt_tbl.ajax.reload();
-        // custom.functions.successMessage(response.message);
         custom.functions.successMessage("Complted Task", response.message);
       },
       error: function (xhr, status, error) {
-        // custom.functions.errorMessage(xhr.responseJSON.message);
       },
     });
   });
 });
-
-

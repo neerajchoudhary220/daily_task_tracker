@@ -16,10 +16,9 @@
              }
         });
       }),
-      uncompleteTask:((taskUncompleteReq)=>{
+      startAgain:((taskUncompleteReq)=>{
         swal({
-          title: "Do you want to uncomplete this task ?",
-          // text: "You won't be able to revert this!",
+          title: "Do you want to start this task again ?",
           icon: "warning",
           buttons: true,
         //   confirmButtonColor: "success",
@@ -33,6 +32,17 @@
       }),
       successMessage:((title,msg)=>{
         swal(title, msg, `success`);
+      }),
+      
+      deleteTblData:((uRL,tbl)=>{
+        $.ajax({
+          url: uRL,
+          type: "get",
+          success: function (response) {
+            swal(`Deleted!`, response.message, `success`);
+            tbl.ajax.reload();
+          },
+        });
       })
         
       

@@ -19,7 +19,7 @@
             </div> --}}
             
             <ul class="nav pcoded-inner-navbar ">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a href="{{ route('dashboard') }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
                 </li>
                 <li class="nav-item pcoded-menu-caption">

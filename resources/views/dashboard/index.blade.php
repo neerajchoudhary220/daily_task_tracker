@@ -15,14 +15,14 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row p-3">
     {{-- Total Task --}}
     <div class="col-4">
         <div class="card">
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-8">
-                        <h4 class="text-info">30200</h4>
+                        <h4 class="text-info">{{ $task->count() ??0}}</h4>
                         <h6 class="text-muted m-b-0">All</h6>
                     </div>
                     <div class="col-4 text-right">
@@ -50,7 +50,7 @@
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-8">
-                        <h4 class="text-warning">30200</h4>
+                        <h4 class="text-warning">{{ $task->where('status',0)->count()??0 }}</h4>
                         <h6 class="text-muted m-b-0">All</h6>
                     </div>
                     <div class="col-4 text-right">
@@ -62,6 +62,34 @@
                 <div class="row align-items-center">
                     <div class="col-9">
                         <p class="text-white m-b-0">Pending Task</p>
+                    </div>
+                    <div class="col-3 text-right">
+                        <i class="feather icon-trending-up text-white f-16"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+     {{-- Completed Task --}}
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-8">
+                        <h4 class="text-success">{{ $task->where('status',1)->count() ??0}}</h4>
+                        <h6 class="text-muted m-b-0">All</h6>
+                    </div>
+                    <div class="col-4 text-right">
+                        <i class="feather icon-bar-chart-2 f-28"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer bg-success">
+                <div class="row align-items-center">
+                    <div class="col-9">
+                        <p class="text-white m-b-0">Completed Task</p>
                     </div>
                     <div class="col-3 text-right">
                         <i class="feather icon-trending-up text-white f-16"></i>
