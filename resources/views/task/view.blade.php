@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-md-6 text-right">
                             <div class="btn-group">
-                                <a class="button btn btn-warning text-white has-ripple" href="{{ route('task.edit', $task->id) }}"
+                                <a class="button btn btn-warning text-white has-ripple" href="{{ route('task.add', $task->id) }}"
                                     data-bs-toggle="tooltip" title="Edit"><i class="feather icon-edit"></i></a>
                                 <button class="button btn btn-danger text-white has-ripple" id="deleteBtn"
                                     data-url="{{ route('task.delete', $task->id) }}" data-bs-toggle="tooltip"

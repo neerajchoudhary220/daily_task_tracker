@@ -14,7 +14,7 @@ class Task extends Model
     protected $appends = ['place_holder'];
 
 
-    protected $fillable =['media_id','status','title','description','start_time','end_time','completed_time'];
+    protected $fillable =['media_id','status','title','description','start_time','end_time','completed_time','task_category_id'];
   
     public function placeHolder():Attribute{
         return Attribute::make(
@@ -34,11 +34,11 @@ class Task extends Model
     }
         
 
-    protected function completedTime():Attribute{
-        return Attribute::make(
-            get:fn($value)=>!empty($value)?Carbon::parse($value)->format(config('constant.datetime_format')):'N/A'
-        );
-    }
+    // protected function completedTime():Attribute{
+    //     return Attribute::make(
+    //         get:fn($value)=>!empty($value)?Carbon::parse($value)->format(config('constant.datetime_format')):'N/A'
+    //     );
+    // }
 
     protected function title():Attribute{
         return Attribute::make(

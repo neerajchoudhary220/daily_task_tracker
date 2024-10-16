@@ -48,3 +48,7 @@ button.close {
   right: 5px;
 }
   
+label.required::after {
+  content: "*";
+  color: red;
+}

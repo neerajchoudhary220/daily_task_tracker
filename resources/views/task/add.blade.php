@@ -18,8 +18,9 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">
+    <div class="row p-3">
+        @livewire('task.task-create')
+        {{-- <div class="col-12">
             <div class="card mb-3">
                 <div class="card-header">
                     <div class="col-md-12 text-right">
@@ -81,17 +82,7 @@
 
                     </div>
 
-                    {{-- <div class="row mb-3">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                {{ html()->input('file', 'image')->attributes(['id' => 'image', 'accept' => 'image/jpeg', 'image/jpg', 'image/png']) }}
-                            </div>
-                            @error('image')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-
-                        </div>
-                    </div> --}}
+               
                     <div class="row">
                         <div class="col-12">
                             {{ html()->input('file', 'image')->attributes(['id' => 'fileField', 'accept' => 'image/jpeg', 'image/jpg', 'image/png']) }}
@@ -122,10 +113,10 @@
 
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 @endsection
-@push('custom-js')
+{{-- @push('custom-js')
     <script>
         $(document).ready(function (e) {
     $('#fileField').on('change', function (e) {
@@ -141,4 +132,4 @@
     })
 })
         </script>
-@endpush
+@endpush --}}

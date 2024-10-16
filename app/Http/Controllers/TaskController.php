@@ -16,13 +16,10 @@ class TaskController extends Controller
 
    public function addTask()  {
     $form_route =route('task.store');
-    return view('task.form',compact('form_route'));
+    return view('task.add',compact('form_route'));
    }
 
-   public function edit(Task $task){
-    $form_route = route('task.update',[$task]);
-    return view('task.form',compact('task','form_route'));
-   }
+
 
    public function store(TaskCreateRequest $taskCreateRequest){
     try {

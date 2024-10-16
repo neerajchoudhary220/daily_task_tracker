@@ -29,8 +29,7 @@ Route::middleware('auth')->group(function(){
     Route::controller(TaskController::class)->prefix('task')->group(function(){
         Route::get('/','index')->name('task');
         Route::get('list','list')->name('task.list');
-        Route::get('add','addTask')->name('task.add');
-        Route::get('edit/{task}','edit')->name('task.edit');
+        Route::get('add/{id?}','addTask')->name('task.add');
         Route::get('view/{task}','view')->name('task.view');  //to view task details
         Route::post('update/{task}','update')->name('task.update'); 
         Route::post('store','store')->name('task.store');
