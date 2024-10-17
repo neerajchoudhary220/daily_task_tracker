@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Task extends Model
@@ -33,22 +34,23 @@ class Task extends Model
         return $this->status?'<div class="badge badge-success p-2"><i class="feather icon-check"></i> Completed</div>':'<div class="badge badge-warning text-white p-2"><i class="feather icon-clock"></i> Pending</div>';
     }
         
-
-    // protected function completedTime():Attribute{
-    //     return Attribute::make(
-    //         get:fn($value)=>!empty($value)?Carbon::parse($value)->format(config('constant.datetime_format')):'N/A'
-    //     );
-    // }
-
     protected function title():Attribute{
         return Attribute::make(
             get:fn($value)=>strlen($value)>50?substr(ucfirst($value),0,50).'...':ucfirst($value)
         );
     }
 
-
-
     public function media(){
         return $this->morphOne(Media::class,'imageable');
+    }
+
+    /**
+     * Get the user that owns the Task
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function taskCategory(): BelongsTo
+    {
+        return $this->belongsTo(TaskCategory::class, 'task_category_id');
     }
 }

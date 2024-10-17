@@ -23,6 +23,10 @@ function dbTable() {
         name: "title",
         data: "title",
       },
+      {
+        name: "category",
+        data: "category",
+      },
 
       {
         name: "status",

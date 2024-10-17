@@ -31,8 +31,6 @@ Route::middleware('auth')->group(function(){
         Route::get('list','list')->name('task.list');
         Route::get('add/{id?}','addTask')->name('task.add');
         Route::get('view/{task}','view')->name('task.view');  //to view task details
-        Route::post('update/{task}','update')->name('task.update'); 
-        Route::post('store','store')->name('task.store');
         Route::get('delete/{task}','delete')->name('task.delete');
         Route::post('complete/{task}','completeTask')->name('task.complete');
         Route::get('uncomplete/{task}','uncompleteTask')->name('task.uncomplete');

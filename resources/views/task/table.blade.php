@@ -13,6 +13,8 @@
                     <th>#</th>
                     <th>ID</th>
                     <th>Title</th>
+                    <th>Category</th>
+
                     <th>Status</th>
                     <th>Start Time</th>
                     <th>End Time</th>

@@ -15,51 +15,7 @@ class TaskController extends Controller
    }
 
    public function addTask()  {
-    $form_route =route('task.store');
-    return view('task.add',compact('form_route'));
-   }
-
-
-
-   public function store(TaskCreateRequest $taskCreateRequest){
-    try {
-        DB::beginTransaction();
-        $task_inputs = $taskCreateRequest->only('title','start_time','end_time','description','image');
-       $task = Task::create($task_inputs);
-       if($taskCreateRequest->hasFile('image')){
-        [$inputs['image'], $inputs['thumbnail']] = createThumbnail($taskCreateRequest->file('image'));
-        $task->media()->create($inputs);
-       }
-       
-       DB::commit();
-       return redirect()->route('task')->with('success','New Task Added Successfully');
-
-        
-    } catch (\Exception $e) {
-        Log::error($e);
-        return back()->with('error',$e->getMessage());
-    }
-   }
-   public function update(Task $task,Request $request){
-    try {
-        DB::beginTransaction();
-        $task_inputs = $request->only('title','start_time','end_time','description','image');
-        $task->update($task_inputs);
-       if($request->hasFile('image')){
-         if($task->media){
-             deleteImage($task);
-         }
-            [$inputs['image'], $inputs['thumbnail']] = createThumbnail($request->file('image'));
-            $task->media()->create($inputs);
-       }
-       DB::commit();
-       return redirect()->route('task')->with('success','Task updated successfully');
-
-        
-    } catch (\Exception $e) {
-        Log::error($e);
-        return back()->with('error',$e->getMessage());
-    }
+    return view('task.add');
    }
 
 
@@ -160,6 +116,7 @@ class TaskController extends Controller
           foreach ($data as $d) {
               $d->index_column =$i;
               $d->status = $d->task_status;
+              $d->category = $d->taskCategory->name;
               $i++;
               $d->start_time = $d->start_date;
               $d->end_time = $d->end_date;
