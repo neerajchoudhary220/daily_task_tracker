@@ -11,8 +11,8 @@
             <thead>
                 <tr class="text-nowrap">
                     <th>#</th>
-                    <th>ID</th>
                     <th>Name</th>
+                    <th>Task</th>
                     <th>Status</th>
                     <th class="text-center">Action</th>
                 </tr>

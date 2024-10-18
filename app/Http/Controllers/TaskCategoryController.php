@@ -40,8 +40,13 @@ class TaskCategoryController extends Controller
             $i=1;
             foreach ($data as $d) {
                 $d->index_column =$i;
+                $pending_task = $d->tasks()->where('status',false)->count();
+                $completed_task = $d->tasks()->where('status',true)->count();
+                $total_task = $pending_task+$completed_task;
+                $d->task = "<span class='badge badge-info'>All:{$total_task}</span>
+                    <span class='badge badge-warning text-white'>P: {$pending_task}</span>
+                    <span class='badge badge-success text-white'>C: {$completed_task}</span>";
                 $i++;
-               
                 $d->action =view('task-category.task-category-action',compact('d'))->render();
   
             }

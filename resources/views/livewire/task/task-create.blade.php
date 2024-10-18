@@ -51,19 +51,7 @@
                 </div>
             </div>
 
-            <div class="row form-group">
-                <div class="col-6">
-                    <label class="form-label" for="completed_time" for="completed_time">Completed Time</label>
-                    <input id="completed_time" type="datetime-local" wire:model="completed_time" class="form-control">
-
-
-                    @error('completed_time')
-                    <span class="text-danger">{{ $message }}</span>
-                        
-                    @enderror
-
-                </div>
-            </div>
+           
 
             <div class="row form-group">
                 <div class="col-12">
@@ -100,7 +88,7 @@
             </div>
             <div class="row">
                 <div class="col-12 text-right">
-                    <button type="submit" class="btn btn-primary" wire:click='save'>Save</button>
+                    <button type="submit" class="btn btn-primary" @disabled($saveBtnDisabled)>Save</button>
                     <button type="reset" class="btn btn-secondary ml-2" wire:click='resetForm'>Reset</button>
                 </div>
             </div>
