@@ -39,6 +39,7 @@
 <script>
     window.dt_tbl = ''
     const task_list_url = "{{ route('task.list') }}";
+    const run_python_script_url = "{{ route('task.run-python') }}"
 </script>
 <script src="{{ asset('assets/js/task/task.js') }}"></script>
 @endpush

@@ -134,4 +134,71 @@ class TaskController extends Controller
   
 }
    }
+
+   public function runPythonScript(Request $request)
+{
+    try {
+        if ($request->ajax()) {
+            $input = $request->input('input'); // Get the input from the request
+            $defaultDir = "cd /home/neeraj"; // Use the absolute path to your home directory
+            $activateVenv = "source .venv/bin/activate";
+            $changeDir = "cd Public/python/google_keep/read_write_excel";
+            $runScript = "python3 read_task_and_update_to_task_table.py " . escapeshellarg($input); // Use python3 if needed
+    
+            // Combine the commands and run them with bash
+            $command = "bash -c '$defaultDir && $activateVenv && $changeDir && $runScript'";
+            // Log::alert($command);
+    
+            // Open the process using proc_open() for more control
+            $process = proc_open(
+                $command,
+                [
+                    1 => ['pipe', 'w'], // Standard output
+                    2 => ['pipe', 'w'], // Standard error
+                ],
+                $pipes
+            );
+    
+            // Check if the process was successfully opened
+            if (is_resource($process)) {
+                // Read the output from the pipes
+                $output = stream_get_contents($pipes[1]);
+                $error = stream_get_contents($pipes[2]);
+    
+                // Close the pipes
+                fclose($pipes[1]);
+                fclose($pipes[2]);
+    
+                // Wait for the process to complete
+                $returnCode = proc_close($process);
+    
+                // Log the output and error for debugging
+                Log::info("Python script output: " . $output);
+                Log::error("Python script error: " . $error);
+    
+                // Check for errors
+                if ($returnCode !== 0) {
+                    return response()->json(['error' => $error], 500);
+                }
+    
+                // Return the output as a response
+                return response()->json(['result' => $output, 'message' => 'Task Synchronized Success']);
+            } else {
+                return response()->json(['error' => 'Failed to execute the command'], 500);
+            }
+        }
+    } catch (\Exception $e) {
+        Log::error("Exception: " . $e->getMessage());
+        return response()->json(['error' => 'An error occurred while running the script'], 500);
+    }
+}
+
+   
+   
+   
+        
+        
+    
+
+   
 }

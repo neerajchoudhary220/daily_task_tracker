@@ -34,7 +34,7 @@ class TaskCreate extends Component
 
     protected $rules =[
         'title' => 'required|string|max:255',
-        'description' => 'required|string',
+        'description' => 'nullable|string',
         'start_time' => 'required|date',
         'end_time' => 'required|date',
         'task_category_id' => 'required|exists:task_categories,id',
@@ -57,6 +57,7 @@ class TaskCreate extends Component
     }
 
     public function save(){
+        // dd("Working");
         $this->saveBtnDisabled=true;
         $validated_data = $this->validate($this->rules);
         $this->saveBtnDisabled=false;

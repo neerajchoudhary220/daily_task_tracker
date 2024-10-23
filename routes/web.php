@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function(){
         Route::get('delete/{task}','delete')->name('task.delete');
         Route::post('complete/{task}','completeTask')->name('task.complete');
         Route::get('uncomplete/{task}','uncompleteTask')->name('task.uncomplete');
+        Route::get("run-python",'runPythonScript')->name('task.run-python');
     });
 
     //TASK CATEGORY ROUTES

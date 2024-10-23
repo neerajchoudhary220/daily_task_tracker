@@ -52,3 +52,23 @@ label.required::after {
   content: "*";
   color: red;
 }
+
+i#sync_btn {
+  font-size: x-large;
+  margin-top: 6px;
+  cursor: pointer;
+}
+
+/* Add this CSS */
+.rotate {
+  animation: rotateAnimation 1s linear infinite;
+}
+
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

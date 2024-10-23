@@ -3,6 +3,9 @@
         <h5 class="m-auto">Task List</h5>
       
         <a href="{{ route('task.add') }}"><button class="btn btn-primary">Add New Task</button></a>
+        <i class="feather icon-upload ml-3  btn btn-info" id="upload_task_btn" value="upload_task" data-toggle="tooltip" title="Upload Task"></i>
+
+        <i class="feather icon-refresh-ccw ml-3 text-info" id="sync_btn" value="sync_task" data-toggle="tooltip" title="Sync"></i>
 
     </div>
 
