@@ -43,6 +43,8 @@ Route::middleware('auth')->group(function(){
         Route::get('add/{id?}','add')->name('task-category.add');  //to add task category
         Route::get('list','list')->name('task-category.list');  //to list all task categories
         Route::get('delete/{taskCategory}','delete')->name('task-category.delete');
+        Route::get("run-python",'runPythonScript')->name('task-category.run-python');
+
     });
     
     Route::get('logout',[AuthController::class,'logout'])->name('logout');

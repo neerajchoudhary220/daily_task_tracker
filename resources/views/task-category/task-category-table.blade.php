@@ -3,7 +3,11 @@
         <h5 class="m-auto">Task Categories</h5>
       
         <a href="{{ route('task-category.add') }}"><button class="btn btn-primary">Add New Category</button></a>
+        <i class="feather icon-upload ml-3  btn btn-info" id="upload_task_categories_btn" value="upload_task_categories" data-title="Upload Task" data-toggle="tooltip" title="Upload Categories"></i>
 
+        <i class="feather icon-refresh-ccw ml-3 text-info sync_btn" id="sync_task_categories_btn" value="sync_task_categories"
+        data-title="Sync Categories"
+        data-toggle="tooltip" title="Sync Categories"></i>
     </div>
 
     <div class="card-body mt-3">

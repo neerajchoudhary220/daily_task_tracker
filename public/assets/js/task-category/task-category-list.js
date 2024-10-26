@@ -61,7 +61,12 @@ function taskCategoryDBtbl() {
   
   $(document).ready(function () {
     taskCategoryDBtbl();
-
+    $("#upload_task_categories_btn,#sync_task_categories_btn").on("click", function(){
+      const sys_value = $(this).attr("value");
+      var $syncButton = $(this);
+      const title = $(this).attr("data-title");
+      runPythonScript($syncButton,sys_value,task_categories_python_script_url,title,task_category_tbl)
+    })
 
   });
   

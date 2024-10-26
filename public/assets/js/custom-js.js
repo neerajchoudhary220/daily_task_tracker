@@ -48,3 +48,23 @@
       
     },
   }
+
+  const runPythonScript =(($syncButton,sys_value,run_python_script_url,title,dbTble)=>{
+    $.ajax({
+      url: run_python_script_url,
+      type: "get",
+      data: { input: sys_value },
+      beforeSend: function () {
+        $syncButton.addClass("rotate"); // Start rotating
+      },
+      success: function (response) {
+        $syncButton.removeClass("rotate"); // Stop rotating
+        custom.functions.successMessage(title, response.message);
+
+        dbTble.ajax.reload();
+      },
+      error: function (xhr, status, error) {
+        $syncButton.removeClass("rotate"); // Stop rotating on error
+      }
+    });
+  })

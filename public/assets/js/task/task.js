@@ -135,32 +135,11 @@ $(document).ready(function () {
 $("#sync_btn,#upload_task_btn").on("click", function () {
   const sys_value = $(this).attr("value");
   var $syncButton = $(this);
-  runPythonScript($syncButton, sys_value)
+  const title = $(this).attr("data-title");
+  runPythonScript($syncButton, sys_value,run_python_script_url,title,db_tbl)
 });
 
-//Click to upload button
-// $("#upload_task_btn").on("click",function(){
-//   const sys_value = $(this).attr("value");
-//   $syncButton = $(this);
-// })
-const runPythonScript =(($syncButton,sys_value)=>{
-  $.ajax({
-    url: run_python_script_url,
-    type: "get",
-    data: { input: sys_value },
-    beforeSend: function () {
-      $syncButton.addClass("rotate"); // Start rotating
-    },
-    success: function (response) {
-      $syncButton.removeClass("rotate"); // Stop rotating
-      custom.functions.successMessage("Sync Task", response.message);
-      dt_tbl.ajax.reload();
-    },
-    error: function (xhr, status, error) {
-      $syncButton.removeClass("rotate"); // Stop rotating on error
-    }
-  });
-})
+
 
 
 

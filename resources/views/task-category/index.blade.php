@@ -34,6 +34,7 @@
 <script>
 window.task_category_tbl='';
 const task_category_list_url ="{{ route('task-category.list') }}";
+const task_categories_python_script_url = "{{ route('task-category.run-python') }}"
     </script>
     <script src="{{asset('assets/js/task-category/task-category-list.js')}}"></script>
 

@@ -53,7 +53,7 @@ label.required::after {
   color: red;
 }
 
-i#sync_btn {
+i.sync_btn {
   font-size: x-large;
   margin-top: 6px;
   cursor: pointer;
