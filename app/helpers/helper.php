@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -86,4 +87,39 @@ function deleteImage($model)
         Storage::delete($model->media->getRawOriginal('thumbnail'));
     }
     $model->media()->delete();
+}
+
+function getLastActivityTime($time)
+{
+    $inputTime = Carbon::createFromFormat('Y-m-d H:i:s', $time);
+
+    $now = Carbon::now();
+    if ($inputTime->diffInMinutes($now) < 60) {
+        // Less than 1 hour
+        $minutes = floor($inputTime->diffInMinutes($now));
+        $result = 'before ' . $minutes . ' minute' . ($minutes > 1 ? 's' : '');
+    } elseif ($inputTime->diffInHours($now) < 24) {
+        // Between 1 hour and 24 hours
+        $hours = floor($inputTime->diffInHours($now));
+        $minutes = floor($inputTime->diffInMinutes($now) % 60);
+        $result = 'before ' . $hours . ' hour' . ($hours > 1 ? 's' : '') . ' ' . $minutes . ' minute' . ($minutes > 1 ? 's' : '');
+    } elseif ($inputTime->diffInDays($now) < 7) {
+        // Between 1 day and 1 week
+        $days = floor($inputTime->diffInDays($now));
+        $result = 'before ' . $days . ' day' . ($days > 1 ? 's' : '');
+    } elseif ($inputTime->diffInWeeks($now) < 4) {
+        // Between 1 week and 1 month
+        $weeks = floor($inputTime->diffInWeeks($now));
+        $result = 'before ' . $weeks . ' week' . ($weeks > 1 ? 's' : '');
+    } elseif ($inputTime->diffInMonths($now) < 12) {
+        // Between 1 month and 1 year
+        $months = floor($inputTime->diffInMonths($now));
+        $result = 'before ' . $months . ' month' . ($months > 1 ? 's' : '');
+    } else {
+        // More than 1 year
+        $years = floor($inputTime->diffInYears($now));
+        $result = 'before ' . $years . ' year' . ($years > 1 ? 's' : '');
+    }
+
+    return $result;
 }

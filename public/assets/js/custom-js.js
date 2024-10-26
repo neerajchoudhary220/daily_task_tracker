@@ -55,13 +55,26 @@
       type: "get",
       data: { input: sys_value },
       beforeSend: function () {
-        $syncButton.addClass("rotate"); // Start rotating
+        
+        $syncButton.attr({
+          'title': 'Running...',
+          'data-original-title': 'Running...'
+        })
+        $syncButton.tooltip('show')
       },
       success: function (response) {
-        $syncButton.removeClass("rotate"); // Stop rotating
         custom.functions.successMessage(title, response.message);
-
+        $.each(response.updated_time, function (key,value){
+          $(`.${key}`).text(value); // Update the time in the table
+          console.log(`key ${key} value ${value}`);
+        })
         dbTble.ajax.reload();
+        $syncButton.attr({
+          'title': title,
+          'data-original-title': title
+      });
+      
+        $syncButton.tooltip('show')
       },
       error: function (xhr, status, error) {
         $syncButton.removeClass("rotate"); // Stop rotating on error

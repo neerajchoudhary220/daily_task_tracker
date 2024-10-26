@@ -136,12 +136,6 @@ $("#sync_btn,#upload_task_btn").on("click", function () {
   const sys_value = $(this).attr("value");
   var $syncButton = $(this);
   const title = $(this).attr("data-title");
-  runPythonScript($syncButton, sys_value,run_python_script_url,title,db_tbl)
-});
-
-
-
-
-
-
+  runPythonScript($syncButton, sys_value,run_python_script_url,title,dt_tbl)
+})
 });

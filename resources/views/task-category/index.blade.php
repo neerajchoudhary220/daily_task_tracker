@@ -18,11 +18,8 @@
         </div>
     </div>
 
-    <div class="row p-3">
-        <div class="col-md-12">
-            @include('task-category.task-category-table')
-        </div>
-    </div>
+    @include('task-category.task-category-table')
+    
     </div>
 
  

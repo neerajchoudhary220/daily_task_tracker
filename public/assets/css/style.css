@@ -21587,10 +21587,11 @@ pre[class*=language-]:before {
 } */
 
 .pcoded-content {
-    /* position: relative;
+    position: relative;
     display: block;
-    padding: 25px; */
+    /* padding: 25px;  */
     margin-top: 140px;
+    max-width: 1275px;
 }
 
 .pcoded-main-container {
@@ -21605,6 +21606,7 @@ pre[class*=language-]:before {
     top: 0;
     margin-left: 230px;
     min-height: 100vh;
+    /* max-width: 1200px !important; */
     transition: all 0.3s ease-in-out;
 }
 
