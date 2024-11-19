@@ -60,13 +60,12 @@
           'title': 'Running...',
           'data-original-title': 'Running...'
         })
-        $syncButton.tooltip('show')
+        // $syncButton.tooltip('show')
       },
       success: function (response) {
         custom.functions.successMessage(title, response.message);
         $.each(response.updated_time, function (key,value){
           $(`.${key}`).text(value); // Update the time in the table
-          console.log(`key ${key} value ${value}`);
         })
         dbTble.ajax.reload();
         $syncButton.attr({
@@ -74,7 +73,7 @@
           'data-original-title': title
       });
       
-        $syncButton.tooltip('show')
+        // $syncButton.tooltip('show')
       },
       error: function (xhr, status, error) {
         $syncButton.removeClass("rotate"); // Stop rotating on error

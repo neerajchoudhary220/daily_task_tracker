@@ -157,7 +157,7 @@ class TaskCategoryController extends Controller
                     // Return the output as a response
                     return response()->json([
                         'result' => $output,
-                        'message' => 'Task Synchronized Success',
+                        'message' => 'Task Category Synchronized Success',
                         'updated_time' => [
                             'last_task_category_sync_time' => $last_task_category_sync_time,
                             'last_task_category_upload_time' => $last_task_category_upload_time

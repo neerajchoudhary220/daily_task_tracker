@@ -25,21 +25,32 @@ class TaskCreate extends Component
 
     public $saveBtnDisabled=false;
 
-    public function mount(Request $request){
-        if($request->id){
-            $this->getTask($request->id);
-        }
-        $this->task_category_list = TaskCategory::get();
-    }
-
     protected $rules =[
         'title' => 'required|string|max:255',
         'description' => 'nullable|string',
         'start_time' => 'required|date',
         'end_time' => 'required|date',
         'task_category_id' => 'required|exists:task_categories,id',
-        'image'=>'nullable|mimes:jpg,jpeg,png|max:2024'
+        
     ];
+
+    public function mount(Request $request){
+        if($request->id){
+            $this->getTask($request->id);
+        }
+        $this->task_category_list = TaskCategory::get();
+        if($this->task){
+            $this->rules=[
+                'image'=>'nullable'
+            ];
+        }else{
+            $this->rules=[
+                'image'=>'nullable|mimes:jpg,jpeg,png|max:2024'
+
+            ];
+        }
+    }
+
 
     public function getTask($id){
         $task = Task::find($id);
@@ -57,10 +68,10 @@ class TaskCreate extends Component
     }
 
     public function save(){
-        // dd("Working");
         $this->saveBtnDisabled=true;
         $validated_data = $this->validate($this->rules);
         $this->saveBtnDisabled=false;
+
         $task=$this->task;
         if($this->task){
             $this->task->update($validated_data);

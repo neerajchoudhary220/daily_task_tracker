@@ -85,6 +85,9 @@
                             Upload Image <i class="feather icon-upload"></i>
                         </button>
                     </div>
+                    @error('image')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
               
             </div>

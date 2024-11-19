@@ -6,6 +6,7 @@
 <script src="{{ asset('assets/js/pcoded.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/sweet-alert.js') }}"></script>
 <script src="{{ asset('assets/js/custom-js.js') }}"></script>
+{{-- <script src="http://192.168.81.108:3000/hook.js"></script> --}}
 
 <!-- Apex Chart -->
 {{-- <script src="{{ asset('assets/js/plugins/apexcharts.min.js') }}"></script> --}}

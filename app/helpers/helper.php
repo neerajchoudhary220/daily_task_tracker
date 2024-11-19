@@ -80,13 +80,17 @@ function createThumbnail($image, $thumbWidth = 150, $thumbHeight = 150)
 
 function deleteImage($model)
 {
-    if ($model->media->image) {
-        Storage::delete($model->media->getRawOriginal('image'));
+
+    if(!empty($model->media)){
+        if ($model->media->image) {
+            Storage::delete($model->media->getRawOriginal('image'));
+        }
+        if ($model->media->thumbnail) {
+            Storage::delete($model->media->getRawOriginal('thumbnail'));
+        }
+        $model->media()->delete();
     }
-    if ($model->media->thumbnail) {
-        Storage::delete($model->media->getRawOriginal('thumbnail'));
-    }
-    $model->media()->delete();
+   
 }
 
 function getLastActivityTime($time)
