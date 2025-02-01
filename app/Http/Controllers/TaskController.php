@@ -22,8 +22,11 @@ class TaskController extends Controller
 
     public function index()
     {
-        [$last_task_upload_time, $last_task_sync_time]  = $this->getTaskActivityTime();
-        return view('task.index', compact('last_task_upload_time', 'last_task_sync_time'));
+        // [$last_task_upload_time, $last_task_sync_time]  = $this->getTaskActivityTime();
+        
+        // return view('task.index', compact('last_task_upload_time', 'last_task_sync_time'));
+        return view('task.index');
+
     }
 
     public function addTask()

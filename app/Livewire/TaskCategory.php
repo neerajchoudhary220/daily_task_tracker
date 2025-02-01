@@ -22,8 +22,11 @@ class TaskCategory extends Component
 
     ];
 
+   
+
 
     public function mount(Request $request){
+
         if($request->id){
             $taskCategory = TaskCategoryModel::find($request->id);
             if($taskCategory){
@@ -44,6 +47,7 @@ class TaskCategory extends Component
 
     public function save(){
         $validated_data = $this->validate($this->rules);
+
         if($this->task_category){
             $this->task_category->update($validated_data);
         }else{

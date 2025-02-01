@@ -22,8 +22,10 @@ class TaskCategoryController extends Controller
 
     public function index()
     {
-        [$last_task_category_upload_time, $last_task_category_sync_time] = $this->getTaskCategoryActivityTime();
-        return view('task-category.index', compact('last_task_category_upload_time', 'last_task_category_sync_time'));
+        // [$last_task_category_upload_time, $last_task_category_sync_time] = $this->getTaskCategoryActivityTime();
+        // return view('task-category.index', compact('last_task_category_upload_time', 'last_task_category_sync_time'));
+        return view('task-category.index');
+
     }
 
     public function add()

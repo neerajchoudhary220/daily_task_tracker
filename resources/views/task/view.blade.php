@@ -64,13 +64,21 @@
 
                             <p>{{ $task->description }}</p>
                         </div>
-                        @if(!empty($task->media->thumbnail))
+                        @if($task->media->image)
+                        {{ dd($task->media->image) }}
+                        <div class="col-4">
+                            <h4>Image:</h4>
+                            <img src="{{ $task->media->image  }}"
+                                alt="Task Image" class="img-fluid">
+                        </div>
+                        @endif
+                        {{-- @if(!empty($task->media->thumbnail))
                         <div class="col-4">
                             <h4>Image:</h4>
                             <img src="{{ $task->media->thumbnail  }}"
                                 alt="Task Image" class="img-fluid">
                         </div>
-                        @endif
+                        @endif --}}
                     </div>
                 </div>
 

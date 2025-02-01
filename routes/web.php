@@ -53,4 +53,9 @@ Route::middleware('auth')->group(function(){
     Route::controller(SavingMoneyController::class)->prefix('saving')->group(function(){
         Route::get('/','index')->name('saving-money');
     });
+   
+});
+
+Route::get('festival',function(){
+    return view('festival.test');
 });

@@ -99,8 +99,11 @@ class TaskCreate extends Component
 
         if($this->image instanceof \Illuminate\Http\UploadedFile){
         deleteImage($task);
-            [$inputs['image'], $inputs['thumbnail']] = createThumbnail($this->image);
-            $task->media()->create($inputs);
+            // [$inputs['image'], $inputs['thumbnail']] = createThumbnail($this->image);
+            $data =[
+                'image'=>$this->image->store('images')
+            ];
+            $task->media()->create($data);
         }
     }
 

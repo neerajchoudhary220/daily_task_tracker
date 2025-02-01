@@ -1,11 +1,11 @@
 <div class="card mt-3 p-2">
     <div class="card-header d-flex justify-content-around">
-        <div>
+        {{-- <div>
             <span class="text-info">Last Uploaded :</span> <small class="py-0 ml-2"><b
                     class="last_task_category_upload_time">{{ $last_task_category_upload_time }}</b></small><br>
             <span class="text-warning">Last Sync :</span> <small class="py-0 ml-2"><b
                     class="last_task_category_sync_time">{{ $last_task_category_sync_time }}</b></small>
-        </div>
+        </div> --}}
 
 
         <h5 class="m-auto">Task Categories</h5>
